@@ -9,6 +9,7 @@ import { BASE_URL } from "../utils.js/constant";
 const Login = () => {
   const [emailId, setEmailId] = useState("aaaa@gmail.com");
   const [password, setPassword] = useState("Aaaa@123");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogIn = async () => {
@@ -21,7 +22,7 @@ const Login = () => {
       dispatch(addUser(res.data));
       return navigate("/");
     } catch (error) {
-      console.log("Error logging in", error);
+      setError(error?.response?.data || "Login failed");
     }
   };
   return (
@@ -49,6 +50,7 @@ const Login = () => {
               placeholder="Password"
             />
           </fieldset>
+          <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center mt-4">
             <button className="btn btn-primary" onClick={handleLogIn}>
               Log in
