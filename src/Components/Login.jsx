@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils.js/userSlice";
 import { useNavigate } from "react-router";
 import { BASE_URL } from "../utils.js/constant";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("aaaa@gmail.com");
+  const [emailId, setEmailId] = useState("aman@gmail.com");
   const [password, setPassword] = useState("Aaaa@123");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const Login = () => {
     }
   };
   return (
+    <>
     <div className="flex justify-center items-center h-screen">
       <div className="card card-dash bg-base-300 w-96">
         <div className="card-body my-10">
@@ -58,7 +59,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 

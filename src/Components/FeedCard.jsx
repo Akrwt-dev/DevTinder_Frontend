@@ -2,7 +2,7 @@ import React from "react";
 import { DEFAULT_USER_IMG } from "../utils.js/constant";
 
 const FeedCard = ({ user }) => {
-  const { firstName, lastName, age, gender, about, photoURL, skills } = user;
+  const { firstName, lastName, age, gender, about, photoURL} = user;
   return (
     <div>
       <div className="card bg-base-300 max-w-80 shadow-sm">
