@@ -2,6 +2,13 @@ import React from "react";
 import { DEFAULT_USER_IMG } from "../utils.js/constant";
 
 const FeedCard = ({ user }) => {
+  if (!user) {
+    return (
+      <div className="text-gray-400 text-center mt-4">
+        Loading feed...
+      </div>
+    );
+  }
   const { firstName, lastName, age, gender, about, photoURL} = user;
   return (
     <div>

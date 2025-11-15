@@ -15,7 +15,6 @@ const EditProfile = ({ user }) => {
   const [error, setError] = useState("");
 
   const updateProfile = async () => {
-    console.log("Save Profile button clicked"); // debug
 
     try {
       const res = await axios.patch(
@@ -24,8 +23,6 @@ const EditProfile = ({ user }) => {
   { withCredentials: true } // important
 );
 
-
-      console.log("Response:", res);
       dispatch(addUser(res?.data?.data));
       setError(""); // clear error if successful
     } catch (err) {

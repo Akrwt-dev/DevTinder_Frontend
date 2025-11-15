@@ -12,7 +12,7 @@ const Body = () => {
   const userData = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const fetchUser = async () => {
-     if (userData) return;
+    if (userData) return;
     try {
       const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
@@ -22,20 +22,22 @@ const Body = () => {
       if (err.response?.status === 401) {
         navigate("/login");
       }
-      console.log(err);
     }
   };
   useEffect(() => {
-      fetchUser();
-    
+    fetchUser();
   }, []);
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <NavBar />
-      <Outlet />
+
+      <div className="flex-1">
+        <Outlet />
+      </div>
+
       <Footer />
-    </>
+    </div>
   );
 };
 

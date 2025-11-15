@@ -8,18 +8,21 @@ const Feed = () => {
   const dispatch = useDispatch();
   const feed = useSelector((store) => store.feed);
   const feedPage = async () => {
-    if (feed) return;
+    if (feed && feed.length > 0) return;
     const res = await axios.get(BASE_URL + "/feed", { withCredentials: true });
+
     dispatch(addFeed(res.data));
   };
   useEffect(() => {
     feedPage();
   }, []);
-  return (feed && (
-    <div className="flex flex-col items-center mt-6 mb-20">
-        <FeedCard user={feed[0]}/> 
-    </div>
-  ));
+  return (
+    feed && (
+      <div className="flex flex-col items-center mt-6 mb-20">
+        <FeedCard user={feed[0]} />
+      </div>
+    )
+  );
 };
 
 export default Feed;
