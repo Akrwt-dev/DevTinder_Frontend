@@ -22,7 +22,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/connections" element={<Connections />} />
               <Route path="/request" element={<Request />} />
-              <Route path="/chat/:userId" element={<Chat />} />
+              <Route path="/chat/:targetUserId" element={<Chat />} />
             </Route>
           </Routes>
         </BrowserRouter>

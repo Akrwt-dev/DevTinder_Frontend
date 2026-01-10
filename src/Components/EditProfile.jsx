@@ -13,6 +13,7 @@ const EditProfile = ({ user }) => {
   const [gender, setGender] = useState(user.gender || "");
   const [about, setAbout] = useState(user.about || "");
   const [error, setError] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
   const updateProfile = async () => {
 
@@ -24,6 +25,10 @@ const EditProfile = ({ user }) => {
 );
 
       dispatch(addUser(res?.data?.data));
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
       setError(""); // clear error if successful
     } catch (err) {
       console.error("Update profile error:", err);
@@ -32,6 +37,7 @@ const EditProfile = ({ user }) => {
   };
 
   return (
+    <>
     <div className="flex justify-center">
       <div className="flex justify-center m-5">
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
@@ -106,6 +112,14 @@ const EditProfile = ({ user }) => {
         <FeedCard user={{ firstName, lastName, age, gender, about, photoURL }} />
       </div>
     </div>
+     {showToast && (
+        <div className="toast toast-top toast-center">
+          <div className="alert alert-success">
+            <span>Profile saved successfully.</span>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
