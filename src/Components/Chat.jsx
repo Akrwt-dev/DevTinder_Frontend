@@ -12,6 +12,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
+
   const fetchChatMessages = async () => {
   const chat = await axios.get(BASE_URL + "/chat/" + targetUserId, {
     withCredentials: true,
@@ -79,7 +80,7 @@ const Chat = () => {
               }
             >
               <div className="chat-header">
-                {`${msg.firstName}  ${msg.lastName}`}
+                {`${msg.firstName} `}
                 <time className="text-xs opacity-50"> 2 hours ago</time>
               </div>
               <div className="chat-bubble">{msg.text}</div>

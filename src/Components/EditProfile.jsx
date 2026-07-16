@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { addUser } from "../utils.js/userSlice";
+import { BASE_URL } from "../utils.js/constant";
 import FeedCard from "./FeedCard";
 
 const EditProfile = ({ user }) => {
@@ -19,10 +20,10 @@ const EditProfile = ({ user }) => {
 
     try {
       const res = await axios.patch(
-  "http://localhost:4000/profile/edit",
-  { firstName, lastName, age, gender, photoURL, about },
-  { withCredentials: true } // important
-);
+        BASE_URL + "/profile/edit",
+        { firstName, lastName, age, gender, photoURL, about },
+        { withCredentials: true } // important
+      );
 
       dispatch(addUser(res?.data?.data));
       setShowToast(true);
